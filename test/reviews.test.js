@@ -19,20 +19,6 @@ describe('app routes', () => {
         return mongoose.connection.close();
     });
 
-    // reviewer: {
-    //     type: String,
-    //     required: true
-    // },
-    // distance: {
-    //     type: Number,
-    //     required: true
-    // },
-    // difficulty: Number,
-    // review: {
-    //     type: String,
-    //     required: true
-    // }
-
     it('creates a new review with POST', () => {
         return request(app)
             .post('/api/v1/reviews')
@@ -53,4 +39,11 @@ describe('app routes', () => {
                 });
             });
     });
+
+    
+
+    // reviewer: 
+    // distance: 
+    // difficulty: not required
+    // review:
 });
