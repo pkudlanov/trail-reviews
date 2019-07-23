@@ -126,6 +126,21 @@ describe('app routes', () => {
             });
     });
 
+    it('deletes a review with DELETE:id', async() => {
+        const review = JSON.parse(JSON.stringify(await Review.create({
+            reviewer: 'Someone Else',
+            distance: 28,
+            difficulty: 2,
+            review: 'Some other boring trail.'
+        })));
+
+        return request(app)
+            .delete(`/api/v1/reviews/${review._id}`)
+            .then(res => {
+                expect(res.body).toEqual(review);
+            });
+    });
+
     // reviewer: 
     // distance: 
     // difficulty: not required
