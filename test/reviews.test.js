@@ -76,6 +76,28 @@ describe('app routes', () => {
             });
     });
 
+    it('gets review by id with GET:id', async() => {
+        const review = await Review.create({
+            reviewer: 'Someone Else',
+            distance: 28,
+            difficulty: 2,
+            review: 'Some other boring trail.'
+        });
+
+        return request(app)
+            .get(`/api/v1/reviews/${review._id}`)
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: expect.any(String),
+                    reviewer: 'Someone Else',
+                    distance: 28,
+                    difficulty: 2,
+                    review: 'Some other boring trail.',
+                    __v: 0
+                });
+            });
+    });
+
     // reviewer: 
     // distance: 
     // difficulty: not required
