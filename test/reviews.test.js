@@ -98,6 +98,34 @@ describe('app routes', () => {
             });
     });
 
+    it('updates a review by id with patch:id', async() => {
+        const review = await Review.create({
+            reviewer: 'Someone Else',
+            distance: 28,
+            difficulty: 2,
+            review: 'Some other boring trail.'
+        });
+
+        return request(app)
+            .put(`/api/v1/reviews/${review._id}`)
+            .send({
+                reviewer: 'George B.',
+                distance: 33,
+                difficulty: 8,
+                review: 'This was a nightmare.'
+            })
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: expect.any(String),
+                    reviewer: 'George B.',
+                    distance: 33,
+                    difficulty: 8,
+                    review: 'This was a nightmare.',
+                    __v: 0
+                });
+            });
+    });
+
     // reviewer: 
     // distance: 
     // difficulty: not required
