@@ -140,9 +140,4 @@ describe('app routes', () => {
                 expect(res.body).toEqual(review);
             });
     });
-
-    // reviewer: 
-    // distance: 
-    // difficulty: not required
-    // review:
 });
